@@ -9,6 +9,7 @@ import Navbar from "./Components/Navbar/Navbar";
 import Footer from "./Components/Footer/Footer";
 import "./App.scss";
 
+
 // Outlet renders child route elements
 
 const Layout = () => {
@@ -41,6 +42,7 @@ const router = createBrowserRouter([
     ],
   },
 ]);
+
 
 function App() {
   return (

@@ -1,50 +1,47 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import "./FeaturedProducts.scss";
 import Card from "../Card/Card";
+
+// Fetch data based on the provided prop type
 const FeaturedProducts = ({ type }) => {
-  const data = [
-    {
-      id: 1,
-      img1: "/images/ama1.png",
-      img2: "/images/beleau.png",
-      isNew: true,
-      title: "Ama Kip Kip Black",
-      oldPrice: 22,
-      newPrice: 12,
-    },
-    {
-      id: 2,
-      img1: "/images/ama2.png",
-      img2: "/images/beleau.png",
-      isNew: true,
-      title: "Ama Kip Kip Blue",
-      oldPrice: 22,
-      newPrice: 12,
-    },
-    {
-      id: 3,
-      img1: "/images/more_kids.png",
-      img2: "/images/beleau.png",
-      isNew: false,
-      title: "Shoes White",
-      oldPrice: 22,
-      newPrice: 12,
-    },
-  ];
+
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.REACT_APP_API_URL}/products?populate=*&filters[type][$eq]=${type}`,
+          {
+            headers: {
+              Authorization: `Bearer ${process.env.REACT_APP_API_TOKEN}`,
+            },
+          }
+        );
+
+        setData(response.data.data)
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div className="featuredProducts">
       <div className="top">
         <h1> {type} Products</h1>
         <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos
-        dignissimos dolores amet autem ut nisi.
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos
+          dignissimos dolores amet autem ut nisi.
         </p>
-
       </div>
       <div className="bottom">
-      {/* if you add{} insert return type, with () no return type */}
-        {data.map(item => (
-            <Card item={item} key={item.id}/>
+        {/* if you add{} insert return type, with () no return type */}
+        {data.map((item) => (
+          <Card item={item} key={item.id} />
         ))}
       </div>
     </div>

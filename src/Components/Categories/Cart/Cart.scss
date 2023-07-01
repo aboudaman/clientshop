@@ -1,13 +1,18 @@
 .cart {
-    display: flex;
-    flex-direction: column;
     max-width: 500px;
     margin: 0 auto;
     padding: 20px;
-    z-index: 100;
+    z-index: 999;
     height: 100vh;
     overflow-y: scroll;
-    background-color: rgb(239, 234, 234);
+    box-shadow: -14px 12px 20px 3px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: -14px 12px 20px 3px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -14px 12px 20px 3px rgba(0, 0, 0, 0.75);
+    // background-color: rgb(239, 234, 234);
+
+    h1 {
+        font-weight: 800;
+    }
 
     .item {
         img {
@@ -17,6 +22,7 @@
             object-fit: cover;
         }
     }
+
     .total,
     .reset {
         margin-bottom: 20px;

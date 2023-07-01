@@ -45,7 +45,7 @@ const Cart = () => {
         <div className="item" key={item.id}>
           <img src={item.img1} alt="" />
           <div className="details">
-            <h1>{item.title}</h1>
+            <h2>{item.title}</h2>
             {/* substring method will only show the first 50 words */}
             <p>{item.description.substring(0, 50)}</p>
             <div className="price">1 x ${item.newPrice}</div>
