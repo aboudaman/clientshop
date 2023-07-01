@@ -1,0 +1,35 @@
+.categories {
+    display: flex;
+    height: 40%;
+    margin: 10px;
+    gap: 10px;
+
+    .col {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        gap: 20px;
+        height: 100%;
+
+        .row {
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+
+    .col-l {
+        display: flex;
+        flex: 1;
+        height: 40%;
+        .row {
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+}
