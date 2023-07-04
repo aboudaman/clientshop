@@ -3,8 +3,6 @@ import Card from "../Card/Card";
 import "./List.scss";
 
 const List = () => {
-
-  
   const data = [
     {
       id: 1,
@@ -36,13 +34,9 @@ const List = () => {
   ];
   return (
     <div className="list">
-      {/* {data?.map((item) => 
-        (<Card item={item} key={item.id} />
-      ))} */}
-
-      {data.map((item) => {
+      {/* {data.map((item) => {
         return <Card item={item} key={item.id} />;
-      })}
+      })} */}
     </div>
   );
 };

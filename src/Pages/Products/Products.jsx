@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import "./Products.scss";
 import List from "../../Components/List/List";
+import useFetch from "../../Hooks/useFetch"
 
 const Products = () => {
   // Get the link in the URL http://ad.com/products/1.
@@ -11,6 +12,9 @@ const Products = () => {
   const catID = parseInt(useParams().id);
   const [maxPrice, setMaxPrice] = useState(1000);
   const [sort, setSort] = useState(null);
+
+  const {loading, error, data} = useFetch(`/subcategories?[filters][categories][id][$eq]=${catID}`)
+  console.log("Data in Products ", data)
 
   return (
     <div className="products">
@@ -41,8 +45,8 @@ const Products = () => {
         </div>
         <div className="sortBY">
           <h2>Sort By</h2>
-          <div class="control">
-            <label class="radio">
+          <div className="control">
+            <label className="radio">
               <input
                 type="radio"
                 id="asc"
@@ -51,7 +55,7 @@ const Products = () => {
               />
               Price (lowest first)
             </label>
-            <label class="radio">
+            <label className="radio">
               <input
                 type="radio"
                 id="desc"
